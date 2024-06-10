@@ -1,16 +1,16 @@
-// Setup canvas and context
-document.body.style.margin = 0;
-document.body.style.overflow = 'hidden';
-const cnv = document.getElementById('cnv_element');
-const ctx = cnv.getContext('2d', { willReadFrequently: true });
+// // Setup canvas and context
+// document.body.style.margin = 0;
+// document.body.style.overflow = 'hidden';
+// const cnv = document.getElementById('cnv_element');
+// const ctx = cnv.getContext('2d', { willReadFrequently: true });
 
 
-// Default set up
-cnv.width = innerWidth;
-cnv.height = innerHeight;
-window.onresize = () => {
-    cnv.width = innerWidth;
-    cnv.height = innerHeight;};
+// // Default set up
+// cnv.width = innerWidth;
+// cnv.height = innerHeight;
+// window.onresize = () => {
+//     cnv.width = innerWidth;
+//     cnv.height = innerHeight;};
 
 
 
