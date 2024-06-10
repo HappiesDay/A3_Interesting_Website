@@ -1,18 +1,18 @@
-document.body.style.margin   = 0
-document.body.style.overflow = `hidden`
-
-const cnv = document.getElementById (`cnv_element`)
-cnv.width = window.innerWidth
-cnv.height = window.innerHeight
-
-const ctx = cnv.getContext (`2d`)
+// Setup canvas and context
+document.body.style.margin = 0;
+document.body.style.overflow = 'hidden';
+const cnv = document.getElementById('cnv_element');
+const ctx = cnv.getContext('2d', { willReadFrequently: true });
 
 
-
+// Default set up
+cnv.width = innerWidth;
+cnv.height = innerHeight;
 window.onresize = () => {
-   cnv.width = innerWidth
-   cnv.height = innerHeight   
-}
+    cnv.width = innerWidth;
+    cnv.height = innerHeight;};
+
+
 
 const textContainer = document.getElementById('textContainer');
 const nextButton = document.getElementById('nextButton');
