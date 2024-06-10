@@ -47,7 +47,7 @@ var messages = {
        ['Flex your biceps', 25],
        ['Lick your biceps', 20],
        ['Feel your body with your hands', 25],
-       ['DON'T CUM! Stop touching.', 25]
+       ['DONT CUM Stop touching.', 25]
    ],
    'finish': [
        ['STOP! Sorry, no cumshot for you. <br />Try again, maybe you will get lucky... Now get your hands off your dick until this is over.', 45, 'red', 2],
