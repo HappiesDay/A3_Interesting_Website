@@ -31,7 +31,7 @@ nextButton.addEventListener('click', () => {
         textContainer.textContent = story[state];
         state++;
     } else {
-        textContainer.textContent = "It's the end of the day. The morrow promises no respite ";
+        textContainer.textContent = "Shadows grow as the sun dips out of sight. The morrow promises no respite ";
         nextButton.disabled = true;
     }
 });
