@@ -18,7 +18,7 @@ const textContainer = document.getElementById('textContainer');
 const nextButton = document.getElementById('nextButton');
 
 const story = [
-    "Welcome to our story.",
+    "Welcome to a subtitle day in the life  story.",
     "It was a dark and stormy night.",
     "Suddenly, a shot rang out!",
     "The end. Thanks for playing!"
@@ -31,7 +31,7 @@ nextButton.addEventListener('click', () => {
         textContainer.textContent = story[state];
         state++;
     } else {
-        textContainer.textContent = "You've reached the end of the story.";
+        textContainer.textContent = "It's the end of the day. The morrow promises no respite ";
         nextButton.disabled = true;
     }
 });
