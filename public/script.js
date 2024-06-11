@@ -38,13 +38,13 @@ nextButton.addEventListener('click', () => {
 });
 
 backButton.addEventListener('click', () => {
-    if (state > 0) {
+    if (state === 0) {
+        backButton.disabled = true; // Disable back button if at the beginning
+    }
+    else {
         state--;
         textContainer.textContent = story[state];
         nextButton.disabled = false; // Enable next button when moving back
-    }
-    if (state === 0) {
-        backButton.disabled = true; // Disable back button if at the beginning
     }
 });
 
