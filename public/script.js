@@ -35,6 +35,7 @@ nextButton.addEventListener('click', () => {
         textContainer.textContent = "Shadows grow as the sun dips out of sight. The morrow promises no respite ";
         nextButton.disabled = true;
     }
+    console.log(state)
 });
 
 backButton.addEventListener('click', () => {
@@ -46,12 +47,13 @@ backButton.addEventListener('click', () => {
         textContainer.textContent = story[state];
         nextButton.disabled = false; // Enable next button when moving back
     }
+    console.log(state)
 });
 
-console.log(state)
+
 
 window.onload = () => {
     textContainer.textContent = "Click 'Next' to begin the story.";
     backButton.disabled = true; // Initially disable back button
-
+    console.log(state)
 };
