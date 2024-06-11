@@ -16,6 +16,7 @@
 
 const textContainer = document.getElementById('textContainer');
 const nextButton = document.getElementById('nextButton');
+const backButton = document.getElementById('nextButton');
 
 const story = [
     "Welcome to a minimal intersensory short story where the story will be told via 2 main ways: sub-title",
@@ -33,6 +34,17 @@ nextButton.addEventListener('click', () => {
     } else {
         textContainer.textContent = "Shadows grow as the sun dips out of sight. The morrow promises no respite ";
         nextButton.disabled = true;
+    }
+});
+
+backButton.addEventListener('click', () => {
+    if (state > 0) {
+        state--;
+        textContainer.textContent = story[state];
+        nextButton.disabled = false; // Enable next button when moving back
+    }
+    if (state === 0) {
+        backButton.disabled = true; // Disable back button if at the beginning
     }
 });
 
