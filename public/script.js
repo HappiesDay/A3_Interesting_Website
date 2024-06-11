@@ -16,7 +16,7 @@
 
 const textContainer = document.getElementById('textContainer');
 const nextButton = document.getElementById('nextButton');
-const backButton = document.getElementById('nextButton');
+const backButton = document.getElementById('backButton');
 
 const story = [
     "Welcome to a minimal intersensory short story where the story will be told via 2 main ways: sub-title",
