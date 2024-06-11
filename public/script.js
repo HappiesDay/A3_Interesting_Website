@@ -52,4 +52,6 @@ console.log(state)
 
 window.onload = () => {
     textContainer.textContent = "Click 'Next' to begin the story.";
+    backButton.disabled = true; // Initially disable back button
+
 };
