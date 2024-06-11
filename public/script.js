@@ -18,8 +18,8 @@ const textContainer = document.getElementById('textContainer');
 const nextButton = document.getElementById('nextButton');
 
 const story = [
-    "Welcome to a minimal intersensory short story where the story will be told via 2 main ways: sub-title and sound design",
-    "It was a dark and stormy night.",
+    "Welcome to a minimal intersensory short story where the story will be told via 2 main ways: sub-title",
+    "and sound design.",
     "Suddenly, a shot rang out!",
     "The end. Thanks for playing!"
 ];
