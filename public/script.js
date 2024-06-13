@@ -1,59 +1,65 @@
-// // Setup canvas and context
-// document.body.style.margin = 0;
-// document.body.style.overflow = 'hidden';
-// const cnv = document.getElementById('cnv_element');
-// const ctx = cnv.getContext('2d', { willReadFrequently: true });
+const socket = new WebSocket (`wss://happiesday-a3-interest-56.deno.dev/`)
+socket.onopen  = () => console.log (`client websocket opened`)
+socket.onclose = () => console.log (`client websocket closed`)
+socket.onerror =  e => console.dir (e)
 
+const squares = []
 
-// // Default set up
-// cnv.width = innerWidth;
-// cnv.height = innerHeight;
-// window.onresize = () => {
-//     cnv.width = innerWidth;
-//     cnv.height = innerHeight;};
+socket.onmessage = e => {
+    console.log (`websocket message received:`)
 
+    // convert the string back into an object
+    const pos = JSON.parse (e.data)
 
+    // add the position object to the squares array
+    squares.push (pos)
 
-const textContainer = document.getElementById('textContainer');
-const nextButton = document.getElementById('nextButton');
-const backButton = document.getElementById('backButton');
+    // display the position object in the console
+    console.dir (pos)
+}
 
-const story = [
-    "Welcome to a minimal intersensory short story where the story will be told via 2 main ways: sub-title",
-    "and sound design.",
-    "Suddenly, a shot rang out!",
-    "The end. Thanks for playing!"
-];
+document.body.style.margin   = 0
+document.body.style.overflow = `hidden`
 
-let state = 0; // tracks which part of the story you're at
+const cnv = document.createElement (`canvas`)
+document.body.appendChild (cnv)
+cnv.width  = innerWidth
+cnv.height = innerHeight
 
-nextButton.addEventListener('click', () => {
-    if (state < story.length) {
-        textContainer.textContent = story[state];
-        state++;
-    } else {
-        textContainer.textContent = "Shadows grow as the sun dips out of sight. The morrow promises no respite ";
-        nextButton.disabled = true;
+const ctx = cnv.getContext (`2d`)
+
+requestAnimationFrame (draw_frame)
+
+function draw_frame () {
+    ctx.fillStyle = `turquoise`
+    ctx.fillRect (0, 0, cnv.width, cnv.height)
+
+    squares.forEach (s => {
+
+        // converting the ratio back to pixels
+        const x_pos = s.x_phase * cnv.width
+        const y_pos = s.y_phase * cnv.height
+
+        ctx.fillStyle = `deeppink`
+        ctx.fillRect (x_pos - 10, y_pos - 10, 20, 20)
+    })
+
+    requestAnimationFrame (draw_frame)
+}
+
+document.body.onclick = e => {
+
+    // converting the .offset positions
+    // to a ratio of the total length
+    // between 0 - 1
+    const pos = {
+        x_phase : e.offsetX / cnv.width,
+        y_phase : e.offsetY / cnv.height,
     }
-    console.log(state)
-});
 
-backButton.addEventListener('click', () => {
-    if (state === 0) {
-        backButton.disabled = true; // Disable back button if at the beginning
-    }
-    else {
-        state--;
-        textContainer.textContent = story[state];
-        nextButton.disabled = false; // Enable next button when moving back
-    }
-    console.log(state)
-});
+    // turn the pos object into a string
+    const pos_string = JSON.stringify (pos)
 
-
-
-window.onload = () => {
-    textContainer.textContent = "Click 'Next' to begin the story.";
-    backButton.disabled = true; // Initially disable back button
-    console.log(state)
-};
+    // send to the websocket server
+    socket.send (pos_string)
+}
