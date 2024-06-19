@@ -1,3 +1,6 @@
+
+
+//Put cube in center
 function center () {
     const viewportWidth = viewport.clientWidth;
     const viewportHeight = viewport.clientHeight;
